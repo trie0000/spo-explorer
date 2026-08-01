@@ -1,0 +1,8 @@
+{
+  "name": "SPO Explorer 動作確認用サンプル",
+  "updated": "2026-08-01",
+  "items": [
+    { "id": 1, "label": "設定A", "enabled": true },
+    { "id": 2, "label": "設定B", "enabled": false }
+  ]
+}
