@@ -5,10 +5,12 @@ SharePoint Online の REST API を、ブラウザだけで試すためのサン�
 
 | ファイル | 中身 |
 |---|---|
+| **`install.html`** | **まずこれを開く。** ボタンをブックマークバーにドラッグすれば導入完了 |
 | `spo-explorer.js` | 本体。これ1本で完結しています |
-| `bookmarklet.txt` | 上を `javascript:` URL に変換したもの（そのままブックマークに登録可） |
-| `bookmarklet-builder.html` | `.js` を編集したあと、自分で `bookmarklet.txt` を作り直すためのページ |
+| `bookmarklet.txt` | 上を `javascript:` URL に変換したもの（ブックマークの URL 欄に直接貼る用） |
 | `sample.json` | JSON 読み込みの動作確認用。ライブラリに置いて使う |
+| `build.mjs` | `.js` を編集したあと `install.html` と `bookmarklet.txt` を再生成する（Node が要る） |
+| `bookmarklet-builder.html` | 同上を Node なしで行うためのページ |
 
 ---
 
@@ -37,12 +39,20 @@ SharePoint Online の REST API を、ブラウザだけで試すためのサン�
 
 ### 方法A：ブックマークレット（まずはこれ）
 
-1. `bookmarklet-builder.html` をブラウザで開く
-2. `spo-explorer.js` を読み込ませて「生成」
-3. 出てきたリンクをブックマークバーにドラッグ
+1. **`install.html` をブラウザで開く**
+2. 「SPO Explorer」ボタンを**ブックマークバーにドラッグ**
 
-`bookmarklet.txt` の中身を、ブックマークの URL 欄に直接貼っても同じです。
-以後は SharePoint のページでボタンを1回押すだけで、パネルが出ます。
+以上です。以後は SharePoint のページでボタンを1回押すだけで、パネルが出ます。
+
+ブックマークレットは `install.html` に埋め込み済みなので、`spo-explorer.js` を読み込ませる操作は要りません。
+ドラッグできない環境では、`bookmarklet.txt` の中身をブックマークの URL 欄に直接貼っても同じです。
+
+**動作確認**（検証用サイトで）
+
+1. ブックマークをクリック → 画面右上にパネルが出る
+2. まず「ライブラリ一覧」を押す（読み取りだけなので安全）。表が出れば成功
+3. 「リスト作成」→「アイテム追加」→「アイテム一覧」の順に試す
+4. 2 で出たパスを「フォルダ」欄に貼って「ファイル一覧」
 
 > **無反応のときは方法Bへ。**
 > ページの CSP（Content-Security-Policy）設定によっては、ブックマークレットが
